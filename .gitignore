@@ -1,0 +1,17 @@
+*.iml
+.idea/
+.arcconfig/
+/**/.DS_Store
+/**/target/
+/**/d:
+/**/f:
+/**/E:
+/**/bin/
+/**/.settings/
+*.project
+/**/.project
+*.classpath
+*.class
+*.properties
+/**/*.bak
+/**/.metadata/
