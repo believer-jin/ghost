@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:task="http://www.springframework.org/schema/task"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing
+		infrastructure -->
+	<!-- Scans within the base package of the application for @Components to 
+		configure as beans -->
+	<!-- @Controller, @Service, @Configuration, etc. -->
+	<!-- 配置注解扫描 -->
+	<context:annotation-config />
+	<context:component-scan base-package="cn.jin">
+	</context:component-scan>
+
+	<!-- SpringMVC配置-->
+	<!-- don't handle the static resource -->
+	<mvc:default-servlet-handler />
+
+	<!-- if you use annotation you must configure following setting -->
+	<mvc:annotation-driven />
+
+	<!-- configure the InternalResourceViewResolver -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		  id="internalResourceViewResolver">
+		<!-- 前缀 -->
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<!-- 后缀 -->
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!--AOP配置-->
+	<aop:aspectj-autoproxy/>
+	<bean id="hystrixAspect" class="com.netflix.hystrix.contrib.javanica.aop.aspectj.HystrixCommandAspect"></bean>
+
+	<!-- 分布式任务管理器 -->
+	<bean id="zkScheduleManager" class="cn.uncode.schedule.ZKScheduleManager"
+		  init-method="init">
+		<property name="zkConfig">
+			<map>
+				<entry key="zkConnectString" value="192.168.1.109:2183" />
+				<entry key="rootPath" value="/uncode/schedule" />
+				<entry key="zkSessionTimeout" value="60000" />
+				<entry key="userName" value="ScheduleAdmin" />
+				<entry key="password" value="password" />
+				<entry key="isCheckParentPath" value="true" />
+				<entry key="ipBlacklist" value="127.0.0.21,loaclhost" />
+			</map>
+		</property>
+	</bean>
+	<!-- Spring定时器注解开关-->
+	<task:annotation-driven scheduler="zkScheduleManager" />
+
+</beans>

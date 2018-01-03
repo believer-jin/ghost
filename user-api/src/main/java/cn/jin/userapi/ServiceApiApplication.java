@@ -2,7 +2,6 @@ package cn.jin.userapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * Springboot启动器
@@ -11,7 +10,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * @version 1.0
  */
 @SpringBootApplication
+/*
 @EnableEurekaClient
+*/
 public class ServiceApiApplication {
 
     public static void main(String[] args) {

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: ghost-api
+server:
+  port: 8762
+logging:
+  level:
+   root: error
+eureka:
+  client:
+    service-url:
+     defaultZone: http://localhost:8761/eureka/

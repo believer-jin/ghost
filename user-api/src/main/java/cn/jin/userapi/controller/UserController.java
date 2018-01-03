@@ -1,8 +1,14 @@
 package cn.jin.userapi.controller;
 
+import cn.jin.userapi.dao.entity.UserDO;
+import cn.jin.userapi.manager.UserManager;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * @Type UserController
@@ -14,9 +20,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
-    @GetMapping("/getUserInfo/{userId}")
-    public String getUserInfo(@PathVariable Long userId){
-        return "hi "+userId+"!";
+    @Resource
+    private UserManager userManager;
 
+    @GetMapping("/user/getUserInfo/{id}")
+    public UserDO getUserInfo(@PathVariable Long id){
+        return userManager.findById(id);
+
+    }
+
+    @GetMapping("/user/getUserByUserName/{userName}")
+    public UserDO getUserInfo(@PathVariable String userName){
+        return userManager.findByUserName(userName);
+
+    }
+
+    @PostMapping("/user/add")
+    public UserDO addUser(@RequestBody UserDO user){
+        return userManager.insert(user);
     }
 }

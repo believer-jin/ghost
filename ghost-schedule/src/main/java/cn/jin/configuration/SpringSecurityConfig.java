@@ -8,7 +8,8 @@
  * 修改历史: (主要历史变动原因及说明)		
  * YYYY-MM-DD |    Author      |	 Change Description		      
  * 2014年8月18日    |    Administrator     |     Created 
- */
+ *//*
+
 package cn.jin.userapi.configuration;
 
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+*/
 /**
  * Description: <类功能描述>. <br>
  * <p>
@@ -26,44 +28,61 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * 
  * @author Administrator
  * @version V1.0
- */
+ *//*
+
 @Configuration
 @EnableWebSecurity
 @Order(2)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    /*
+    */
+/*
      * @Bean
      * 
      * @ConditionalOnMissingBean public AuthenticationProvider
      * authenticationProvider() { return new
      * DefaultJaasAuthenticationProvider(); }
-     */
+     *//*
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        /*
+        */
+/*
          * http .authenticationProvider(authenticationProvider())
          * .csrf().disable()
          * .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.
          * STATELESS).and() .authorizeRequests()
          * .antMatchers(HttpMethod.OPTIONS, "
-         *//**
+         *//*
+*/
+/**
            * ").permitAll() .antMatchers(HttpMethod.GET, "
-           */
-        /**
+           *//*
+
+        */
+/**
          * ").permitAll() .antMatchers(HttpMethod.POST, "
-         */
-        /**
+         *//*
+
+        */
+/**
          * ").permitAll() .antMatchers(HttpMethod.PUT, "
-         */
-        /**
+         *//*
+
+        */
+/**
          * ").permitAll() .antMatchers(HttpMethod.DELETE, "
-         *//**
+         *//*
+*/
+/**
            * ").permitAll() .anyRequest().authenticated() .and() .httpBasic();
-           */
-        http.authorizeRequests().antMatchers("/*").permitAll();
+           *//*
+
+        http.authorizeRequests().antMatchers("*/
+/*").permitAll();
         http.csrf().disable();
     }
 
 }
+*/

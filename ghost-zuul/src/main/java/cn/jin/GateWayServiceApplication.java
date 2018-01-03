@@ -1,8 +1,8 @@
-package cn.jin.userapi;
+package cn.jin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 /**
  * Springboot启动器
@@ -11,10 +11,11 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
  * @version 1.0
  */
 @SpringBootApplication
-@EnableEurekaServer
-public class EurekaserverApplication {
+@EnableZuulProxy
+public class GateWayServiceApplication{
 
     public static void main(String[] args) {
-        SpringApplication.run(EurekaserverApplication.class, args);
+        SpringApplication.run(GateWayServiceApplication.class, args);
+
     }
 }

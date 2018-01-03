@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: ghost-zuul
+server:
+  port: 8888
+zuul:
+  routes:
+    api:
+      path: /it/**
+      url: http://localhost:8091/user/
+logging:
+  level:
+    root: error

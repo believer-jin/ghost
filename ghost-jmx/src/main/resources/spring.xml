@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:test="http://code.guahao.org/schema/test"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.guahao.org/schema/test
+        http://code.guahao.org/schema/user.xsd">
+
+    <test:user id="user"
+               userName="alexander"
+               userId="001"
+               sex="1"></test:user>
+</beans>
